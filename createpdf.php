@@ -24,16 +24,6 @@ if ( $allow_localhost == 1 ) {
 	$z_pass=$_SESSION['password'];
 }
 
-/*
-if ( $z_user == "" ) {
-  print_r($_SERVER);
-  print_r($_POST);
-  print_r($_GET);
-  exit(0);
-  $z_user=$_POST['username'];
-  $z_pass=$_POST['password'];
-}
-*/
 if ( $z_user == "" ) {
   header("Location: index.php");
 }
@@ -113,15 +103,6 @@ if (isset($_GET['myitems2'])) { $myitemgraphs=$_GET['myitems2']; } // Use the ma
 // Calculate report starttime and endtime
 $report_start	= date('Y.m.d H:i',$starttime);
 $report_end	= date('Y.m.d H:i',$endtime);
-
-# print <<< ENDHTML
-#</br>
-#Starttime : $starttime</br>
-#Timeperiod: $timeperiod</br>
-#STime     : $stime</br>
-#Start     : $report_start</br>
-#End       : $report_end</br>
-#ENDHTML;
 
 // Setup temporary file/directory names
 $z_tmpimg_path	= tempdir($z_tmp_path);
@@ -382,4 +363,3 @@ rmdir("$z_tmpimg_path");
 
 if ($debug) { echo "Report ready - available as: <A HREF=\"$pdf_report_url/$pdf_filename\">$pdf_report_url/$pdf_filename</A></br>\n"; }
 else { header("Location: $pdf_report_url/$pdf_filename"); }
-?>

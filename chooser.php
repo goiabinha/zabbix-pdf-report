@@ -46,17 +46,17 @@ header( 'Content-type: text/html; charset=utf-8' );
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 	<title>Zabbix Dynamic PDF Report</title>
 	<meta charset="utf-8" />
-	<link rel="shortcut icon" href="/zabbix/images/general/zabbix.ico" />
+	<link rel="shortcut icon" href="images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="css/zabbix.default.css" />
 	<link rel="stylesheet" type="text/css" href="css/zabbix.color.css" />
 	<link rel="stylesheet" type="text/css" href="css/zabbix.report.css" />
-	<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css"/ >
-	<link rel="stylesheet" type="text/css" href="css/jquery.tablesorter.pager.min.css"/ >
+	<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.css"/ >
+	<link rel="stylesheet" type="text/css" href="css/tablesorter.css"/ >
 	<link rel="stylesheet" type="text/css" href="css/select2.css"/ >
-	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.datetimepicker.min.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="js/jquery.tablesorter.combined.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
 	<script type="text/javascript" src="js/select2.min.js"></script> 
 	<script>
 		$(function(){
@@ -179,10 +179,10 @@ ReadArray($host_groups);
 </select>
 </p>
 <p>
-<input type="checkbox" name="GraphsOn" value="yes" checked> Include graphs</input> &nbsp;
-<input type="checkbox" name="ItemGraphsOn" value="yes"> Include graphed items</input> &nbsp;
-<input type="checkbox" name="TriggersOn" value="yes"> Show triggers</input><BR/>
-<input type="checkbox" name="ItemsOn" value="yes"> Show configured items status</input> &nbsp;
+<input type="checkbox" name="GraphsOn" value="yes" checked> Include graphs</input><br/>
+<input type="checkbox" name="ItemGraphsOn" value="yes"> Include graphed items</input><br/>
+<input type="checkbox" name="TriggersOn" value="yes"> Show triggers</input><br/>
+<input type="checkbox" name="ItemsOn" value="yes"> Show configured items status</input><br/>
 <input type="checkbox" name="TrendsOn" value="yes"> Show configured trends (SLA-ish)</input>
 </p>
 <p>
@@ -222,7 +222,7 @@ ReadArray($host_groups);
 </td><td valign="bottom" align="middle">
 <input type='submit' value='Generate'>
 <span class="smalltext"><input type='checkbox' name='debug'>Debug</span>
-<p><center>Version: <?php echo($version); ?></center></p>
+<p><div style="text-align: center;">Version: <?php echo($version); ?></div></p>
 </td></tr>
 </table>
 </form>
@@ -237,7 +237,7 @@ ReadArray($host_groups);
 </table>
 </div>
 
-</html></body>
+</body>
 <script>
 jQuery(function(){
  jQuery('#datepicker_start').datetimepicker({
@@ -271,3 +271,4 @@ jQuery(function(){
 jQuery('#timepicker_start').datetimepicker({ datepicker:false, format:'H:i' });
 jQuery('#timepicker_end').datetimepicker({ datepicker:false, format:'H:i' });
 </script>
+</html>

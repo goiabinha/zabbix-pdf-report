@@ -68,4 +68,3 @@ function company_logo(&$pdf,$x,$y,$height,$wl=0,$wr=0){
   $pdf->restoreState();
   return $height;
 }
-?>
