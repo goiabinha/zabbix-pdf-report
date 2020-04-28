@@ -51,4 +51,3 @@ $z_url_graph	= $z_server ."chart2.php";
 $z_item_graph	= $z_server ."chart.php";
 $z_url_api	= $z_server ."api_jsonrpc.php";
 $z_login_data	= "name=" .$z_user ."&password=" .$z_pass ."&autologin=1&enter=Sign+in";
-?>

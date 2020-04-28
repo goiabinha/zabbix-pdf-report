@@ -20,25 +20,25 @@ function array_flatten($array) {
 
 	$output = array();
 	array_walk_recursive($array, function ($current) use (&$output) {
-    $output[] = $current;
-});
-   return $output;
+		$output[] = $current;
+	});
+	return $output;
 }
 
 function listdir_by_date($path){
-    $dir = opendir($path);
-    $list = array();
-    while($file = readdir($dir)){
-        if ($file != '.' and $file != '..'){
-            // add the filename, to be sure not to
-            // overwrite a array key
-            $ctime = filemtime("$path/$file") . ',' . $file;
-            $list[$ctime] = $file;
-        }
-    }
-    closedir($dir);
-    krsort($list);
-    return $list;
+	$dir = opendir($path);
+	$list = array();
+	while($file = readdir($dir)){
+		if ($file != '.' and $file != '..'){
+			// add the filename, to be sure not to
+			// overwrite a array key
+			$ctime = filemtime("$path/$file") . ',' . $file;
+			$list[$ctime] = $file;
+		}
+	}
+	closedir($dir);
+	krsort($list);
+	return $list;
 }
 
 function ListOldReports($dir) {
@@ -61,4 +61,3 @@ function ListOldReports($dir) {
 	}
 	echo "</tbody>";
 }
-?>
