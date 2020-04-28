@@ -54,11 +54,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     </tr>
 </table>
 <br/><br/>
-<center><h1>Log in to Zabbix to Generate PDF reports</h1></center>
+<div style="text-align: center;"><h1>Zabbix PDF reports</h1></div>
 <br/>
 <body>
 <form action="" method="post">
-    <table border="1" rules="NONE" frame="BOX" width="250" cellpadding="10">
+    <table border="1" rules="NONE" frame="BOX" width="250" cellpadding="10" align="center">
+        <tr>
+            <td>&nbsp; </td>
+            <td>&nbsp; </td>
+            <td>&nbsp; </td>
+        </tr>
         <tr>
             <td valign="middle" align="right" width="115">
                 <label for="Username"><b>Username:</b></label>
@@ -76,14 +81,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <td valign="center" align="left" height="30">
                 <p><input type="password" name="password"/><br /></p>
             </td>
-            <td valign="middle" width="110">nbsp;
+            <td valign="middle" width="110">
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td><td valign="bottom" align="left">
+            <td>&nbsp;</td>
+            <td valign="bottom" align="left">
                 <input type='submit' value='Sign in'>
                 <p>Version <?php echo($version); ?></p>
             </td>
+            <td>&nbsp;</td>
         </tr>
     </table>
 

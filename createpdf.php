@@ -206,7 +206,7 @@ $images = '';
 // select a font
 $pdf->selectFont($mainFont);
 
-$pdf->ezText("$company_name Zabbix Report",(40-strlen($company_name)),array('justification'=>'centre'));
+$pdf->ezText("Zabbix Report",(40-strlen($company_name)),array('justification'=>'centre'));
 $pdf->ezText("",14,array('justification'=>'centre'));
 $pdf->ezText("for",16,array('justification'=>'centre'));
 $pdf->ezText("",14,array('justification'=>'centre'));

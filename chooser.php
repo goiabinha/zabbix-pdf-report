@@ -227,8 +227,7 @@ or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
         </table>
     </form>
     <br/>
-    <h2 id="h_OldReports">Old reports<br>
-        (click to show)</h2>
+    <h2 id="h_OldReports">Old reports<br>(click to show)</h2>
 </center>
 
 <div class="d_OldReports table-hidden">
