@@ -1,6 +1,6 @@
 <?php
 //CONFIGURABLE
-$user_login=1; // If $user_login is 0, use credentials below and don't prompt for login.
+$user_login=0; // If $user_login is 0, use credentials below and don't prompt for login.
 //$user_login=0; // If $user_login is 0, use credentials below and don't prompt for login.
 $allow_localhost=1; // If a request is made from 127.0.0.1, use credentials below in createpdf.php
 
@@ -36,7 +36,7 @@ $myitemgraphs = '#(Utilization of|farm connection|Average Latency|Number of proc
 // $z_server 	= 'http://localhost/zabbix/';
 $z_server 	= 'http://YourServerHere/zabbix/'; // Replace YourServerHere with either en IP or an FDQN (e.g. zabbix.company.com). Remove the s in https if for some reason you don't use https yet. Or better yet, get Let's Encrypt installed and use https!
 $z_user		= 'Admin';
-$z_pass		= 'YourPasswordHere';
+$z_pass		= 'zabbix';
 
 
 # Temporary directory for storing pdf data and graphs - must exist
