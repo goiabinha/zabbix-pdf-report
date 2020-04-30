@@ -10,11 +10,7 @@ function fromto($stime,$period) {
 	$add = "+$period seconds";
 	$end = strtotime($add,$start);
 	$to   = date("Y-m-d+H:i:s", $end);
-	/*
-      if ( $debug ) {
-        echo "<br>From set to: $from, Add set to: $add, Start: $start, End: $end, To set to: $to<br/>";
-      }
-    */
+
 	return array('from' => $from, 'to' => $to);
 }
 
@@ -92,7 +88,6 @@ function GetGraphImageById ($graphs, $stime, $period = 3600, $width, $height, $f
 	// TODO: foreach ($graphs as $graphid) { $filename....
 	$graphtime=fromto($stime,$period);
 	$graphid = $graphs;
-	//$image_file = $z_tmpimg_path ."/".$trimmed_hostname ."_" .$graphid .".png";
 	curl_setopt($ch, CURLOPT_URL, $z_url_graph ."?graphid=" . $graphid ."&profileIdx=web.graphs.filter&width=" . $width . "&height=" . $height ."&period=" . $period ."&stime=" .$stime . "&from=" . $graphtime['from'] . "&to=" . $graphtime['to'] . "&isNow=0");
 	$output = curl_exec($ch);
 	curl_close($ch);
@@ -125,7 +120,6 @@ function GetItemImageById ($graphs, $stime, $period = 3600, $width, $height, $fi
 	// TODO: foreach ($graphs as $graphid) { $filename....
 	$graphtime=fromto($stime,$period);
 	$graphid = $graphs;
-	//$image_file = $z_tmpimg_path ."/".$trimmed_hostname ."_" .$graphid .".png";
 	curl_setopt($ch, CURLOPT_URL, $z_item_graph ."?itemids[$graphid]=" .$graphid ."&profileIdx=web.graphs.filter&width=" .$width ."&height=" .$height ."&period=" .$period ."&stime=" .$stime . "&from=" . $graphtime['from'] . "&to=" . $graphtime['to'] . "&isNow=0");
 	$output = curl_exec($ch);
 	curl_close($ch);
@@ -140,7 +134,7 @@ function GetItemImageById ($graphs, $stime, $period = 3600, $width, $height, $fi
 function secondsToTime($seconds) {
 	$dtF = new DateTime("@0");
 	$dtT = new DateTime("@$seconds");
-	return $dtF->diff($dtT)->format('%a days, %h hours, %i minutes and %s seconds');
+	return $dtF->diff($dtT)->format(_("%a days, %h hours, %i minutes and %s seconds"));
 }
 
 function percent($value) {
@@ -155,7 +149,6 @@ function formatBytes($bytes, $precision = 2) {
 	$pow = min($pow, count($units) - 1);
 
 	// Uncomment one of the following alternatives
-	// $bytes /= pow(1024, $pow);
 	$bytes /= (1 << (10 * $pow));
 
 	return round($bytes, $precision) . ' ' . $units[$pow];
@@ -170,7 +163,6 @@ function formatBits($bits, $precision = 2) {
 
 	// Uncomment one of the following alternatives
 	$bits /= pow(1000, $pow);
-	//$bits /= (1 << (10 * $pow));
 
 	return round($bits, $precision) . ' ' . $units[$pow];
 }
@@ -202,10 +194,8 @@ function CreatePDF($hostarray) {
 		// MMO: Insert trigger / alert / event / history just about here.
 
 		// Latest status of specific items
-		//	$ItemsOn = "yes";
-		//	$TrendsOn = "yes";
 		if ($ItemsOn == "yes" ) {
-			$stringData = "1<System Status for ".$hostname.">\n\n";
+			$stringData = "1<"._("System Status for")." ".$hostname.">\n\n";
 			fwrite($fh,$stringData);
 			$stringData="#C\n"; // Use CODE font
 			fwrite($fh, $stringData);
@@ -225,7 +215,6 @@ function CreatePDF($hostarray) {
 						if ($type == 'bits') {
 							$value=formatBits($val['lastvalue']);
 							$type='string';
-							//if ($debug) { echo "ifSpeed? We got here! - $value - " . $val['lastvalue'] . "\n<br/>"; }
 						}
 						if (($type == 'number') && ($unit == 'B')) {
 							$value=formatBytes($value);
@@ -261,12 +250,11 @@ function CreatePDF($hostarray) {
 		}
 		// Trends
 		if ($TrendsOn == "yes" ) {
-			$stringData = "1<Trends and metrics for ".$hostname.">\n\n";
+			$stringData = "1<"._("Trends and metrics for")." ".$hostname.">\n\n";
 			fwrite($fh,$stringData);
 			$stringData="#C\n"; // Use CODE font
 			fwrite($fh, $stringData);
 			foreach($trends as $trend=>$type) {
-				#$sys = ZabbixAPI::fetch_array('trend','get',array('output'=>array('itemid','name','key_','description','lastclock','lastvalue'), 'hostids'=>$hostid, 'search'=>array('key_'=>"uptime"), 'sortfield'=>'name'));
 				$sys = ZabbixAPI::fetch_array('item','get',array('output'=>array('itemid','name','key_','description','lastclock','lastvalue','units'), 'hostids'=>$hostid, 'search'=>array('name'=>"$trend"), 'sortfield'=>'name'));
 				$sys = maSort($sys,'key_');
 				if (!empty($sys[0])) {
@@ -285,7 +273,6 @@ function CreatePDF($hostarray) {
 						if ($type == 'bits') {
 							$value=formatBits($value);
 							$type='string';
-							//if ($debug) { echo "ifSpeed? We got here! - $value - " . $val['lastvalue'] . "\n<br/>"; }
 						}
 						if (($type == 'number') && ($unit == 'B')) {
 							$value=formatBytes($value);
@@ -313,7 +300,6 @@ function CreatePDF($hostarray) {
 						$stringData=$dateval . "<b>" . $name . "</b> trend/SLA: " . $tval . "\n";
 						fwrite($fh, $stringData);
 						$type=$otype;
-
 					}
 				}
 			}
@@ -331,13 +317,11 @@ function CreatePDF($hostarray) {
 
 			if (!empty($alerts[0])) {
 				if ($debug) { echo "<pre>" ; print_r($alerts); echo "</pre><br/>\n"; }
-				$stringData = "1<Trigger data for ".$hostname.">\n\n";
+				$stringData = "1<"._("Trigger data for")." ".$hostname.">\n\n";
 				fwrite($fh,$stringData);
 				$stringData="#C\n"; // Use CODE font
 				fwrite($fh, $stringData);
-				//asort($alerts);
 				foreach($alerts as $alertkey=>$alert) {
-					//$sub=iconv("UTF-8","ISO-8859-1",$alert['subject']);
 					$sub=$alert['subject'];
 					$tstamp=$alert['clock'];
 					$aid=$alert['alertid'];
@@ -358,12 +342,10 @@ function CreatePDF($hostarray) {
 							fwrite($fh, $stringData);
 							fwrite($fh, "</b>\n");
 						}
-						/*				fclose($fh); */
 						if ($debug) { flush(); ob_flush(); flush(); }
 					}
 				}
 			}
-			/*		$fh = fopen($tmp_pdf_data, 'a') or die("Can't open $tmp_pdf_data for writing!"); */
 			fwrite($fh,"\n");
 			$stringData="#c\n\n"; // Use normal font
 			fwrite($fh, $stringData);
@@ -377,13 +359,10 @@ function CreatePDF($hostarray) {
 				fwrite($fh,"#NP\n");
 			}
 
-			$stringData = "1<Graphs for ".$hostname.">\n\n";
+			$stringData = "1<"._("Graphs for")." ".$hostname.">\n\n";
 			fwrite($fh, $stringData);
-			/*		fclose($fh); */
-			#$hostGraphs = ZabbixAPI::fetch_array('graph','get',array('output'=>'extend','hostids'=>$hostid))
 			$hostGraphs = ZabbixAPI::fetch_array('graph','get',array('output'=>array('graphid','name'),'hostids'=>$hostid))
 			or die('Unable to get graphs: '.print_r(ZabbixAPI::getLastError(),true));
-			#var_dump($hostGraphs);
 			asort($hostGraphs);
 
 			if ($debug) { echo "<p><B>Graph selector :</B> $mygraphs<p>\n"; }
@@ -401,7 +380,6 @@ function CreatePDF($hostarray) {
 						echo "<pre>" ; print_r($graphs); echo "</pre>\n";
 					}
 					$image_file = $z_tmpimg_path ."/".$trimmed_hostname ."_" .$graphid .".png";
-//					if ($debug) { echo "$graphname(id:$graphid)</br>\n"; }
 					$fh = fopen($tmp_pdf_data, 'a') or die("Can't open $tmp_pdf_data for writing!");
 					$stringData = "2<$graphname>\n";
 					fwrite($fh, $stringData);
@@ -409,7 +387,6 @@ function CreatePDF($hostarray) {
 					fwrite($fh, $stringData);
 					GetGraphImageById($graphid,$stime,$timeperiod,'750','150',$image_file);
 					$count+=1;
-					/*			fclose($fh); */
 				} else {
 					if (($debug) and ($mygraphs!="")) { echo "$graphname (id:$graphid) did not match the expression - skipping it.<BR/>\n"; }
 				}
@@ -420,21 +397,15 @@ function CreatePDF($hostarray) {
 				if ($debug) { flush(); ob_flush(); flush(); }
 			}
 			if (strpos($stringData,'1<') === 0 ) {
-				fwrite($fh, "No matching graphs found. Maybe tune the setting?\n");
+				fwrite($fh, _("No matching graphs found. Maybe tune the setting?")."\n");
 			} else {
 				fwrite($fh, "#NP\n");
 			}
 		}
 		if ( $ItemGraphsOn == "yes" ) {
 			$count = 0;
-			/*			if ( $TriggersOn == "yes" ) {
-                            fwrite($fh,"#NP\n");
-                        } */
-
-			$stringData = "1<Item Graphs for ".$hostname.">\n\n";
+			$stringData = "1<"._("Item Graphs for")." ".$hostname.">\n\n";
 			fwrite($fh, $stringData);
-			/*		fclose($fh); */
-			#$hostGraphs = ZabbixAPI::fetch_array('graph','get',array('output'=>'extend','hostids'=>$hostid))
 			$hostGraphs = ZabbixAPI::fetch_array('item','get',array('output'=>array('itemid','name','key_'),'hostids'=>$hostid,'filter'=>array('value_type'=>array('0','3'))))
 			or die('Unable to get graphs: '.print_r(ZabbixAPI::getLastError(),true));
 			#var_dump($hostGraphs);
@@ -456,14 +427,12 @@ function CreatePDF($hostarray) {
 						echo "<pre>" ; print_r($graphs); echo "</pre>\n";
 					}
 					$image_file = $z_tmpimg_path ."/".$trimmed_hostname ."_" .$graphid .".png";
-//					if ($debug) { echo "$graphname(id:$graphid)</br>\n"; }
 					$fh = fopen($tmp_pdf_data, 'a') or die("Can't open $tmp_pdf_data for writing!");
 					$stringData = "2<$graphname>\n";
 					fwrite($fh, $stringData);
 					$stringData = "[" .$image_file ."]\n";
 					fwrite($fh, $stringData);
 					GetItemImageById($graphid,$stime,$timeperiod,'750','150',$image_file);
-					/*			fclose($fh); */
 				} else {
 					if (($debug) and ($myitemgraphs!="")) { echo "$graphname (id:$graphid) did not match the expression - skipping it.<BR/>\n"; }
 				}
@@ -474,7 +443,7 @@ function CreatePDF($hostarray) {
 				if ($debug) { flush(); ob_flush(); flush(); }
 			}
 			if (strpos($stringData,'1<') === 0 ) {
-				fwrite($fh, "No items found to graph. Maybe tune the setting?\n");
+				fwrite($fh, _("No items found to graph. Maybe tune the setting?")."\n");
 			} else {
 				fwrite($fh, "#NP\n");
 			}

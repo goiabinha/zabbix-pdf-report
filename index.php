@@ -68,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <label for="Username"><b><?php echo _("Username"); ?>:</b></label>
             </td>
             <td valign="center" align="left" height="30">
-                <p><input type="text" name="username"/><br /></p>
+                <p><input type="text" name="username" required/><br /></p>
             </td>
             <td valign="middle" width="110">&nbsp;
             </td>
@@ -78,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <label for="Password"><b><?php echo _("Password"); ?>:</b></label>
             </td>
             <td valign="center" align="left" height="30">
-                <p><input type="password" name="password"/><br /></p>
+                <p><input type="password" name="password" required/><br /></p>
             </td>
             <td valign="middle" width="110">
             </td>
@@ -87,7 +87,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <td>&nbsp;</td>
             <td valign="bottom" align="left">
                 <input type='submit' value='<?php echo _("Sign in"); ?>'>
-                <p><?php echo _("Version")." ".$version; ?></p>
+                <p><?php echo _("Version:")." ".$version; ?></p>
             </td>
             <td>&nbsp;</td>
         </tr>

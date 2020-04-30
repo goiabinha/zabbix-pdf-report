@@ -43,7 +43,7 @@ header( 'Content-type: text/html; charset=utf-8' );
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-    <title>Zabbix Dynamic PDF Report</title>
+    <title><?php echo _("Zabbix PDF report"); ?></title>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/zabbix.default.css" />
@@ -120,7 +120,7 @@ header( 'Content-type: text/html; charset=utf-8' );
 <div id="message-global-wrap"><div id="message-global"></div></div>
 <table class="maxwidth page_header" cellspacing="0" cellpadding="5"><tr><td class="page_header_l"><a class="image" href="http://www.zabbix.com/" target="_blank"><div class="zabbix_logo">&nbsp;</div></a></td><td class="maxwidth page_header_r">&nbsp;</td></tr></table>
 <br/><br/>
-<center><h1>Generate PDF Report</h1></center>
+<div style="text-align: center;"><h1><?php echo _("Generate PDF Report"); ?></h1></div>
 <br/>
 <?php
 // ERROR REPORTING
@@ -141,90 +141,93 @@ or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
 
 // Form dropdown boxes from Zabbix API Data
 ?>
-<center>
+<div style="text-align: center;">
     <form class="cmxform" id="ReportForm" name="ReportForm" action='createpdf.php' method='GET'>
         <table border="1" rules="NONE" frame="BOX" width="600" cellpadding="10">
-            <tr><td valign="middle" align="left" width="115">
-                    <label for="ReportType"><b>Report type</b></label>
-                </td><td valign="center" align="left" height="30">
+            <tr>
+                <td valign="middle" align="left" width="115">
+                    <label for="ReportType"><b><?php echo _("Report type"); ?></b></label>
+                </td>
+                <td valign="center" align="left" height="30">
                     <p>
-                        <input id="ReportHost" type="radio" name="ReportType" value="host" title="Generate report on HOST" checked="checked" />Host
-                        <input id="ReportHostGroup" type="radio" name="ReportType" value="hostgroup" title="Generate report on GROUP" />Host Group
+                        <input id="ReportHost" type="radio" name="ReportType" value="host" title="<?php echo _("Generate report on HOST"); ?>" checked="checked" /><?php echo _("Host"); ?>
+                        <input id="ReportHostGroup" type="radio" name="ReportType" value="hostgroup" title="<?php echo _("Generate report on GROUP"); ?>" /><?php echo _("Host Group"); ?>
                     </p>
-                </td><td align="center" valign="top" width="110">
-                    <center><?php echo $z_user; ?> <a href="logout.php">Logout</a></center>
-                </td></tr>
-            <tr><td valign="middle" align="left">
-                    &nbsp;
-                </td><td valign="center" align="left" width="70%" height="30">
+                </td>
+                <td align="center" valign="top" width="110">
+                    <div style="text-align: center;"><?php echo $z_user; ?> <a href="logout.php"><?php echo _("Logout"); ?></a></div>
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" align="left">&nbsp;</td>
+                <td valign="center" align="left" width="70%" height="30">
                     <p id="p_ReportHost">
-                        <label for="s_ReportHost" class="error">Please select your host</label>
-                        &nbsp;<select id="s_ReportHost" name="HostID" width="350"  style="width: 350px" title="Please select host" required>
-                            <option value="">--&nbsp;Select&nbsp;host&nbsp;--</option>
-                            <?php
-                                ReadArray($hosts);
-                            ?>
+                        <label for="s_ReportHost" class="error"><?php echo _("Please select your host"); ?></label>
+                        &nbsp;<select id="s_ReportHost" name="HostID" width="350"  style="width: 350px" title="<?php echo _("Please select host"); ?>" required>
+                            <option value="">--&nbsp;<?php echo _("Select host"); ?>&nbsp;--</option>
+                            <?php ReadArray($hosts); ?>
                         </select>
                     </p>
                     <p id="p_ReportHostGroup">
-                        &nbsp;<select id="s_ReportHostGroup" name="GroupID" width="350" style="width: 350px" title="Please select hostgroup" >
-                            <option value="">--&nbsp;Select&nbsp;hostgroup&nbsp;--</option>
-                            <?php
-                                ReadArray($host_groups);
-                            ?>
+                        &nbsp;<select id="s_ReportHostGroup" name="GroupID" width="350" style="width: 350px" title="<?php echo _("Please select hostgroup"); ?>" >
+                            <option value="">--&nbsp;<?php echo _("Select hostgroup"); ?>&nbsp;--</option>
+                            <?php ReadArray($host_groups); ?>
                         </select>
                     </p>
                     <p>
-                        <input type="checkbox" name="GraphsOn" value="yes" checked> Include graphs</input><br/>
-                        <input type="checkbox" name="ItemGraphsOn" value="yes"> Include graphed items</input><br/>
-                        <input type="checkbox" name="TriggersOn" value="yes"> Show triggers</input><br/>
-                        <input type="checkbox" name="ItemsOn" value="yes"> Show configured items status</input><br/>
-                        <input type="checkbox" name="TrendsOn" value="yes"> Show configured trends (SLA-ish)</input>
+                        <input type="checkbox" name="GraphsOn" value="yes" checked> <?php echo _("Include graphs"); ?><br/>
+                        <input type="checkbox" name="ItemGraphsOn" value="yes"> <?php echo _("Include graphed items"); ?><br/>
+                        <input type="checkbox" name="TriggersOn" value="yes"> <?php echo _("Show triggers"); ?><br/>
+                        <input type="checkbox" name="ItemsOn" value="yes"> <?php echo _("Show configured items status"); ?><br/>
+                        <input type="checkbox" name="TrendsOn" value="yes"> <?php echo _("Show configured trends (SLA-ish)"); ?>
                     </p>
                     <p>
-                        <input type="string" name="mygraphs2" style="font-size: 10px;"  size=80 value="<?php echo $mygraphs; ?>"> &uarr; Graphs to show (#.*# = all):</input>
-                        <input type="string" name="myitems2" style="font-size: 10px;"  size=80 value="<?php echo $myitemgraphs; ?>"> &uarr; Items to graph (#.*# = all):</input>
+                        <input type="text" name="mygraphs2" style="font-size: 10px;"  size=80 value="<?php echo $mygraphs; ?>"> &uarr; <?php echo _("Graphs to show (#.*# = all):"); ?>
+                        <input type="text" name="myitems2" style="font-size: 10px;"  size=80 value="<?php echo $myitemgraphs; ?>"> &uarr; <?php echo _("Items to graph (#.*# = all):"); ?>
                     </p>
-                </td><td valign="middle">
-                    &nbsp;
-                </td></tr>
-            <tr><td valign="middle" align="left">
-                    <label for="ReportRange"><b>Report range</b></label>
-                </td><td valign="middle" align="left">
+                </td>
+                <td valign="middle">&nbsp;</td>
+            </tr>
+            <tr>
+                <td valign="middle" align="left">
+                    <label for="ReportRange"><b><?php echo _("Report range"); ?></b></label>
+                </td>
+                <td valign="middle" align="left">
                     <p>
-                        <input id="RangeLast" type="radio" name="ReportRange" value="last" title="Report on last activity" checked="checked" />Last
-                        <input id="RangeCustom" type="radio" name="ReportRange" value="custom" title="Report using custom report range" />Custom
-
+                        <input id="RangeLast" type="radio" name="ReportRange" value="last" title="<?php echo _("Report on last activity"); ?>" checked="checked" /><?php echo _("Last"); ?>
+                        <input id="RangeCustom" type="radio" name="ReportRange" value="custom" title="<?php echo _("Report using custom report range"); ?>" /><?php echo _("Custom"); ?>
                     </p>
-                </td><td valign="middle">
-                    &nbsp;
-                </td></tr>
-            <tr><td valign="middle" align="left" height="50">
-                    &nbsp;
-                </td><td valign="middle" align="left" height="50">
+                </td>
+                <td valign="middle">&nbsp;</td>
+            </tr>
+            <tr>
+                <td valign="middle" align="left" height="50">&nbsp;</td>
+                <td valign="middle" align="left" height="50">
                     <p id=p_RangeLast>
-                        &nbsp;<select id="s_RangeLast" name="timePeriod" title="Please select range" required>
-                            <option value="Hour">Hour</option>
-                            <option value="Day">Day</option>
-                            <option value="Week">Week</option>
-                            <option value="Month">Month</option>
-                            <option value="Year">Year</option>
+                        &nbsp;<select id="s_RangeLast" name="timePeriod" title="<?php echo _("Please select range"); ?>" required>
+                            <option value="Hour"><?php echo _("Hour"); ?></option>
+                            <option value="Day"><?php echo _("Day"); ?></option>
+                            <option value="Week"><?php echo _("Week"); ?></option>
+                            <option value="Month"><?php echo _("Month"); ?></option>
+                            <option value="Year"><?php echo _("Year"); ?></option>
                         </select>
                     </p>
                     <p id="p_RangeCustom">
-                        &nbsp;<b>Start:</b><input name="startdate" id="datepicker_start" type="date" size="8" />&nbsp;<input name="starttime" id="timepicker_start" type="time" size="5" /><br/>
-                        &nbsp;<b>End:</b><input name="enddate" id="datepicker_end" type="date" size="8" />&nbsp;<input name="endtime" id="timepicker_end" type="time" size="5" />
+                        &nbsp;<b><?php echo _("Start:"); ?></b><input name="startdate" id="datepicker_start" type="date" size="8" />&nbsp;<input name="starttime" id="timepicker_start" type="time" size="5" /><br/>
+                        &nbsp;<b><?php echo _("End:"); ?></b><input name="enddate" id="datepicker_end" type="date" size="8" />&nbsp;<input name="endtime" id="timepicker_end" type="time" size="5" />
                     </p>
-                </td><td valign="bottom" align="middle">
-                    <input type='submit' value='Generate'>
-                    <span class="smalltext"><input type='checkbox' name='debug'>Debug</span>
-                    <p><div style="text-align: center;">Version: <?php echo($version); ?></div></p>
-                </td></tr>
+                </td>
+                <td valign="bottom" align="middle">
+                    <input type='submit' value='<?php echo _("Generate"); ?>'>
+                    <span class="smalltext"><input type='checkbox' name='debug'><?php echo _("Debug"); ?></span>
+                    <p><div style="text-align: center;"><?php echo _("Version:")." ".$version; ?></div></p>
+                </td>
+            </tr>
         </table>
     </form>
     <br/>
-    <h2 id="h_OldReports">Old reports<br>(click to show)</h2>
-</center>
+    <h2 id="h_OldReports"><?php echo _("Old reports"); ?><br>(<?php echo _("click to show"); ?>)</h2>
+</div>
 
 <div class="d_OldReports table-hidden">
     <table id="OldReports" cellpadding="0" class="tablesorter">

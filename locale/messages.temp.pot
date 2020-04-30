@@ -1,281 +1,277 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-04-30 16:19-0300\n"
 "PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-KeywordsList: _(\n"
 "X-Poedit-Basepath: ..\n"
-"Last-Translator: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language: pt_BR\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: chooser.php:46 index.php:35 index.php:56
 msgid "Zabbix PDF report"
-msgstr "Relatório PDF do Zabbix"
+msgstr ""
 
 #: chooser.php:123
 msgid "Generate PDF Report"
-msgstr "Gerar relatório PDF"
+msgstr ""
 
 #: chooser.php:149
 msgid "Report type"
-msgstr "Tipo de relatório"
+msgstr ""
 
 #: chooser.php:153
 msgid "Generate report on HOST"
-msgstr "Relatório no Host"
+msgstr ""
 
 #: chooser.php:153
 msgid "Host"
-msgstr "Host"
+msgstr ""
 
 #: chooser.php:154
 msgid "Generate report on GROUP"
-msgstr "Relatório no grupo de Host"
+msgstr ""
 
 #: chooser.php:154
 msgid "Host Group"
-msgstr "Grupo de Host"
+msgstr ""
 
 #: chooser.php:158
 msgid "Logout"
-msgstr "Sair"
+msgstr ""
 
 #: chooser.php:165
 msgid "Please select your host"
-msgstr "Por favor, selecione seu host"
+msgstr ""
 
 #: chooser.php:166
 msgid "Please select host"
-msgstr "Por favor, selecione o host"
+msgstr ""
 
 #: chooser.php:167
 msgid "Select host"
-msgstr "Selecionar host"
+msgstr ""
 
 #: chooser.php:172
 msgid "Please select hostgroup"
-msgstr "Por favor, selecione o grupo de host"
+msgstr ""
 
 #: chooser.php:173
 msgid "Select hostgroup"
-msgstr "Selecionar grupo"
+msgstr ""
 
 #: chooser.php:178
 msgid "Include graphs"
-msgstr "Incluir gráficos"
+msgstr ""
 
 #: chooser.php:179
 msgid "Include graphed items"
-msgstr "Incluir gráficos de itens"
+msgstr ""
 
 #: chooser.php:180
 msgid "Show triggers"
-msgstr "Mostrar triggers"
+msgstr ""
 
 #: chooser.php:181
 msgid "Show configured items status"
-msgstr "Mostrar status dos itens configurados"
+msgstr ""
 
 #: chooser.php:182
 msgid "Show configured trends (SLA-ish)"
-msgstr "Mostrar tendências configuradas (SLA-ish)"
+msgstr ""
 
 #: chooser.php:185
 msgid "Graphs to show (#.*# = all):"
-msgstr "Mostrar gráficos (#. * # = todos):"
+msgstr ""
 
 #: chooser.php:186
 msgid "Items to graph (#.*# = all):"
-msgstr "Mostrar gráficos de itens (#. * # = todos):"
+msgstr ""
 
 #: chooser.php:193
 msgid "Report range"
-msgstr "Intervalo do relatório"
+msgstr ""
 
 #: chooser.php:197
 msgid "Report on last activity"
-msgstr "Relatório sobre a última atividade"
+msgstr ""
 
 #: chooser.php:197
 msgid "Last"
-msgstr "Último"
+msgstr ""
 
 #: chooser.php:198
 msgid "Report using custom report range"
-msgstr "Relatório usando intervalo personalizado"
+msgstr ""
 
 #: chooser.php:198
 msgid "Custom"
-msgstr "Personalizado"
+msgstr ""
 
 #: chooser.php:207
 msgid "Please select range"
-msgstr "Por favor selecione o intervalo"
+msgstr ""
 
 #: chooser.php:208
 msgid "Hour"
-msgstr "Hora"
+msgstr ""
 
 #: chooser.php:209
 msgid "Day"
-msgstr "Dia"
+msgstr ""
 
 #: chooser.php:210
 msgid "Week"
-msgstr "Semana"
+msgstr ""
 
 #: chooser.php:211
 msgid "Month"
-msgstr "Mês"
+msgstr ""
 
 #: chooser.php:212
 msgid "Year"
-msgstr "Ano"
+msgstr ""
 
 #: chooser.php:216
 msgid "Start:"
-msgstr "Início:"
+msgstr ""
 
 #: chooser.php:217
 msgid "End:"
-msgstr "Fim:"
+msgstr ""
 
 #: chooser.php:221
 msgid "Generate"
-msgstr "Gerar"
+msgstr ""
 
 #: chooser.php:222
 msgid "Debug"
-msgstr "Depurar"
+msgstr ""
 
 #: chooser.php:223 index.php:90
 msgid "Version:"
-msgstr "Versão:"
+msgstr ""
 
 #: chooser.php:229
 msgid "Old reports"
-msgstr "Relatórios antigos"
+msgstr ""
 
 #: chooser.php:229
 msgid "click to show"
-msgstr "clique para mostrar"
+msgstr ""
 
 #: createpdf.php:77
 msgid "Startdate is missing!"
-msgstr "Falta data de início!"
+msgstr ""
 
 #: createpdf.php:78
 msgid "When setting custom report period, startdate is required"
-msgstr "Ao definir o período personalizado, a data de início é necessária"
+msgstr ""
 
 #: createpdf.php:87
 msgid "Startdate need to be before tomorrow or end date!"
-msgstr "A data de início precisa ser menor que a data final!"
+msgstr ""
 
 #: createpdf.php:90
 msgid "Time frame need to be minimum 1 hour!"
-msgstr "O período de tempo precisa ter no mínimo 1 hora!"
+msgstr ""
 
 #: createpdf.php:95
 msgid "Unknown time report range!"
-msgstr "Intervalo de tempo desconhecido!"
+msgstr ""
 
 #: createpdf.php:132
 msgid "Introduction"
-msgstr "Introdução"
+msgstr ""
 
 #: createpdf.php:134
-msgid ""
-"This is an automatically generated PDF file containing data gathered from "
-"Zabbix Monitoring System"
+msgid "This is an automatically generated PDF file containing data gathered from Zabbix Monitoring System"
 msgstr ""
-"Este é um arquivo PDF gerado automaticamente, contendo dados coletados do "
-"Zabbix Monitoring System"
 
 #: createpdf.php:141
 msgid "ERROR: Need hostid for host report!"
-msgstr "ERRO: Precisa do hostid para relatório de host!"
+msgstr ""
 
 #: createpdf.php:150
 msgid "ERROR: Need groupid for group report!"
-msgstr "ERRO: Precisa do groupid para relatório de grupo!"
+msgstr ""
 
 #: createpdf.php:161
 msgid "Report type not selected!"
-msgstr "Tipo de relatório não selecionado!"
+msgstr ""
 
 #: createpdf.php:169
 msgid "Report "
-msgstr "Relatório "
+msgstr ""
 
 #: createpdf.php:169
 msgid " not found! Cannot continue to create PDF."
-msgstr " não encontrado! Não é possível continuar a criar PDF."
+msgstr ""
 
 #: createpdf.php:185
 msgid "Generated by Zabbix Monitoring Dynamic Report v"
-msgstr "Gerado pelo Zabbix Monitoring Dynamic Report v"
+msgstr ""
 
 #: createpdf.php:327
 msgid "Contents"
-msgstr "Conteúdo"
+msgstr ""
 
 #: inc/createpdf.functions.php:137
 msgid "%a days, %h hours, %i minutes and %s seconds"
-msgstr "%a dias, %h horas, %i minutos e %s segundos"
+msgstr ""
 
 #: inc/createpdf.functions.php:198
 msgid "System Status for"
-msgstr "Status do sistema para"
+msgstr ""
 
 #: inc/createpdf.functions.php:253
 msgid "Trends and metrics for"
-msgstr "Tendências e métricas para"
+msgstr ""
 
 #: inc/createpdf.functions.php:320
 msgid "Trigger data for"
-msgstr "Dados de trigger para"
+msgstr ""
 
 #: inc/createpdf.functions.php:362
 msgid "Graphs for"
-msgstr "Gráficos para"
+msgstr ""
 
 #: inc/createpdf.functions.php:400
 msgid "No matching graphs found. Maybe tune the setting?"
 msgstr ""
-"Nenhum gráfico correspondente encontrado. Talvez ajustar a configuração?"
 
 #: inc/createpdf.functions.php:407
 msgid "Item Graphs for"
-msgstr "Gráficos de itens para"
+msgstr ""
 
 #: inc/createpdf.functions.php:446
 msgid "No items found to graph. Maybe tune the setting?"
-msgstr "Nenhum item encontrado no gráfico. Talvez ajustar a configuração?"
+msgstr ""
 
 #: inc/index.functions.php:48
 msgid "Report timestamp"
-msgstr "Registro de data e hora do relatório"
+msgstr ""
 
 #: inc/index.functions.php:48
 msgid "Report"
-msgstr "Relatório"
+msgstr ""
 
 #: index.php:68
 msgid "Username"
-msgstr "Usuário"
+msgstr ""
 
 #: index.php:78
 msgid "Password"
-msgstr "Senha"
+msgstr ""
 
 #: index.php:89
 msgid "Sign in"
-msgstr "Entrar"
+msgstr ""
+

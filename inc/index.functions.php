@@ -43,10 +43,9 @@ function listdir_by_date($path){
 
 function ListOldReports($dir) {
 	global $z_user, $hosts, $host_groups;
-	#$dir_files = array_diff(scandir($dir), array('..', '.'));
 	$dir_files = listdir_by_date($dir);
 	echo "<thead>";
-	echo "<tr><th>Report timestamp</th><th align=\"left\">Report</th></tr>\n";
+	echo "<tr><th>"._("Report timestamp")."</th><th align=\"left\">"._("Report")."</th></tr>\n";
 	echo "</thead>";
 	echo "<tbody>";
 	foreach ($dir_files as $fdate => $fname) {
