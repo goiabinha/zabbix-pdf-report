@@ -7,15 +7,15 @@ $allow_localhost=1; // If a request is made from 127.0.0.1, use credentials belo
 $version = '1.1.1';
 
 // I18N support information here
-$language = "pt_BR.UTF8";
+$locale = "pt_BR.UTF8";
 $directory = dirname(__FILE__)."/locale";
-putenv("LC_ALL=" . $language);
-setlocale( LC_ALL, $language);
+putenv("LC_ALL=" . $locale);
+setlocale( LC_ALL, $locale);
 bindtextdomain("messages", $directory);
 bind_textdomain_codeset("messages", 'UTF-8');
 textdomain("messages");
-if (false === setlocale(LC_ALL, $language)) {
-    echo sprintf('Locale "%s" is not installed in the system.', $language);
+if (false === setlocale(LC_ALL, $locale)) {
+    echo sprintf('Locale "%s" is not installed in the system.', $locale);
 }
 
 // What items would you like to see in the report? Things that do not match are excluded automatically.

@@ -32,7 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <html class="originalblue">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-    <title>Zabbix Dynamic PDF Report</title>
+    <title><?php echo _("Zabbix PDF report"); ?></title>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/zabbix.default.css" />
@@ -53,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     </tr>
 </table>
 <br/><br/>
-<div style="text-align: center;"><h1><?php echo _("Zabbix PDF reports"); ?></h1></div>
+<div style="text-align: center;"><h1><?php echo _("Zabbix PDF report"); ?></h1></div>
 <br/>
 <body>
 <form action="" method="post">
