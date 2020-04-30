@@ -22,7 +22,6 @@ include("config.inc.php");
 
 if ( $user_login == 1 ) {
     session_start();
-//print_r($_SESSION);
     $z_user=$_SESSION['username'];
     $z_pass=$_SESSION['password'];
 
@@ -125,11 +124,11 @@ header( 'Content-type: text/html; charset=utf-8' );
 <br/>
 <?php
 // ERROR REPORTING
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 set_time_limit(60);
 
 // ZabbixAPI Connection
-ZabbixAPI::debugEnabled(TRUE);
+//ZabbixAPI::debugEnabled(TRUE);
 ZabbixAPI::login($z_server,$z_user,$z_pass)
 or die('Unable to login: '.print_r(ZabbixAPI::getLastError(),true));
 //fetch graph data host
@@ -139,9 +138,6 @@ $host_groups = ZabbixAPI::fetch_array('hostgroup','get', array('output'=>array('
 or die('Unable to get hosts: '.print_r(ZabbixAPI::getLastError(),true));
 ZabbixAPI::logout($z_server,$z_user,$z_pass)
 or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
-
-//var_dump($hosts);
-//var_dump($host_group);
 
 // Form dropdown boxes from Zabbix API Data
 ?>
@@ -166,7 +162,7 @@ or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
                         &nbsp;<select id="s_ReportHost" name="HostID" width="350"  style="width: 350px" title="Please select host" required>
                             <option value="">--&nbsp;Select&nbsp;host&nbsp;--</option>
                             <?php
-                            ReadArray($hosts);
+                                ReadArray($hosts);
                             ?>
                         </select>
                     </p>
@@ -174,7 +170,7 @@ or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
                         &nbsp;<select id="s_ReportHostGroup" name="GroupID" width="350" style="width: 350px" title="Please select hostgroup" >
                             <option value="">--&nbsp;Select&nbsp;hostgroup&nbsp;--</option>
                             <?php
-                            ReadArray($host_groups);
+                                ReadArray($host_groups);
                             ?>
                         </select>
                     </p>
@@ -216,8 +212,8 @@ or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
                         </select>
                     </p>
                     <p id="p_RangeCustom">
-                        &nbsp;<b>Start:</b><input name="startdate" id="datepicker_start" type="date" size="8" />at<input name="starttime" id="timepicker_start" type="time" size="5" />
-                        <b>End:</b><input name="enddate" id="datepicker_end" type="date" size="8" />at<input name="endtime" id="timepicker_end" type="time" size="5" />
+                        &nbsp;<b>Start:</b><input name="startdate" id="datepicker_start" type="date" size="8" />&nbsp;<input name="starttime" id="timepicker_start" type="time" size="5" /><br/>
+                        &nbsp;<b>End:</b><input name="enddate" id="datepicker_end" type="date" size="8" />&nbsp;<input name="endtime" id="timepicker_end" type="time" size="5" />
                     </p>
                 </td><td valign="bottom" align="middle">
                     <input type='submit' value='Generate'>

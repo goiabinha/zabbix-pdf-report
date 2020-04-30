@@ -13,7 +13,6 @@ include("config.inc.php");
 
 if ( $user_login == 1 ) {
     session_start();
-//print_r($_SESSION);
     if ( $allow_localhost == 1 ) {
         if ( $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
             $z_user=$_SESSION['username'];
@@ -39,7 +38,7 @@ include ("inc/class.ezpdf.php");
 include ("inc/pdf.functions.php");
 
 // ERROR REPORTING
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 set_time_limit(1800);
 
 // Process GET variables
@@ -50,7 +49,7 @@ if (isset($_GET['ItemsOn'])) { $ItemsOn="yes"; }
 if (isset($_GET['TrendsOn'])) { $TrendsOn="yes"; }
 
 if (isset($_GET['debug']))	 { $debug	= true; }
-else				 { $debug	= false; }
+else { $debug = false; }
 if (isset($_GET['HostID']))	 { $hostid	= filter_input(INPUT_GET,'HostID', FILTER_SANITIZE_STRING); }
 if (isset($_GET['GroupID']))	 { $groupid	= filter_input(INPUT_GET,'GroupID', FILTER_SANITIZE_STRING); }
 if (isset($_GET['ReportType']))  { $reporttype	= filter_input(INPUT_GET,'ReportType', FILTER_SANITIZE_STRING); }
@@ -124,7 +123,7 @@ if ($debug) {
 }
 // get graphids
 // Login to Zabbix API using ZabbixAPI.class.php
-ZabbixAPI::debugEnabled(TRUE);
+//ZabbixAPI::debugEnabled(TRUE);
 ZabbixAPI::login($z_server,$z_user,$z_pass)
 or die('Unable to login: '.print_r(ZabbixAPI::getLastError(),true));
 

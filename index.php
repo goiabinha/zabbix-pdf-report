@@ -18,9 +18,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $_SESSION['login_user']=$myusername;
     $_SESSION['username']=$myusername;
     $_SESSION['password']=$mypassword;
-//print_r($_SESSION); 
 
-    ZabbixAPI::debugEnabled(TRUE);
+    //ZabbixAPI::debugEnabled(TRUE);
     ZabbixAPI::login($z_server,$myusername,$mypassword)
     or die('Unable to login: '.print_r(ZabbixAPI::getLastError(),true));
 
@@ -54,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     </tr>
 </table>
 <br/><br/>
-<div style="text-align: center;"><h1>Zabbix PDF reports</h1></div>
+<div style="text-align: center;"><h1><?php echo _("Zabbix PDF reports"); ?></h1></div>
 <br/>
 <body>
 <form action="" method="post">
@@ -66,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         </tr>
         <tr>
             <td valign="middle" align="right" width="115">
-                <label for="Username"><b>Username:</b></label>
+                <label for="Username"><b><?php echo _("Username"); ?>:</b></label>
             </td>
             <td valign="center" align="left" height="30">
                 <p><input type="text" name="username"/><br /></p>
@@ -76,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         </tr>
         <tr>
             <td valign="middle" align="right" width="115">
-                <label for="Password"><b>Password:</b></label>
+                <label for="Password"><b><?php echo _("Password"); ?>:</b></label>
             </td>
             <td valign="center" align="left" height="30">
                 <p><input type="password" name="password"/><br /></p>
@@ -87,8 +86,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         <tr>
             <td>&nbsp;</td>
             <td valign="bottom" align="left">
-                <input type='submit' value='Sign in'>
-                <p>Version <?php echo($version); ?></p>
+                <input type='submit' value='<?php echo _("Sign in"); ?>'>
+                <p><?php echo _("Version")." ".$version; ?></p>
             </td>
             <td>&nbsp;</td>
         </tr>

@@ -4,7 +4,19 @@ $user_login=1; // If $user_login is 0, use credentials below and don't prompt fo
 //$user_login=0; // If $user_login is 0, use credentials below and don't prompt for login.
 $allow_localhost=1; // If a request is made from 127.0.0.1, use credentials below in createpdf.php
 
-$version	= '1.1.1';
+$version = '1.1.1';
+
+// I18N support information here
+$language = "pt_BR.UTF8";
+$directory = dirname(__FILE__)."/locale";
+putenv("LC_ALL=" . $language);
+setlocale( LC_ALL, $language);
+bindtextdomain("messages", $directory);
+bind_textdomain_codeset("messages", 'UTF-8');
+textdomain("messages");
+if (false === setlocale(LC_ALL, $language)) {
+    echo sprintf('Locale "%s" is not installed in the system.', $language);
+}
 
 // What items would you like to see in the report? Things that do not match are excluded automatically.
 $items = array('system information'=>'string','uptime'=>'seconds', 'boot time'=>'datetime', 'total memory'=>'bytes', 'available memory'=>'bytes', 'Free disk space'=>'number', 'Free swap space in %'=>'number', 'version of zabbix_agent'=>'string', 'services'=>'string', 'update'=>'number','certificate'=>'string','advanced ntp'=>'string','Interface speed'=>'bits','Operational status'=>'updown','Alias of interface'=>'string','certificate'=>'string');
@@ -22,7 +34,7 @@ $myitemgraphs = '#(Utilization of|farm connection|Average Latency|Number of proc
 
 # zabbix server info(user must have API access)
 // $z_server 	= 'http://localhost/zabbix/';
-$z_server 	= 'https://YourServerHere/zabbix/'; // Replace YourServerHere with either en IP or an FDQN (e.g. zabbix.company.com). Remove the s in https if for some reason you don't use https yet. Or better yet, get Let's Encrypt installed and use https!
+$z_server 	= 'http://YourServerHere/zabbix/'; // Replace YourServerHere with either en IP or an FDQN (e.g. zabbix.company.com). Remove the s in https if for some reason you don't use https yet. Or better yet, get Let's Encrypt installed and use https!
 $z_user		= 'Admin';
 $z_pass		= 'YourPasswordHere';
 
@@ -38,7 +50,7 @@ $pdf_report_url	= "./reports";
 $paper_format	= 'A4'; // formats supported: 4A0, 2A0, A0 -> A10, B0 -> B10, C0 -> C10, RA0 -> RA4, SRA0 -> SRA4, LETTER, LEGAL, EXECUTIVE, FOLIO
 $paper_orientation = 'portrait'; // formats supported: portrait / landscape
 # time zone - see http://php.net/manual/en/timezones.php
-$timezone	= 'Europe/Oslo';
+$timezone	= 'America/Sao_Paulo';
 # Logo used in PDF - may be empty
 # TODO: Specify image size!
 $pdf_logo	= './images/general/zabbix.png';
