@@ -6,18 +6,21 @@ Eventos também podem ser incluídos no relatório.
 
 ### Instalação
 Debian/Ubuntu  
+`apt update`  
 `apt -y install git php-curl php-json`  
 RHEL/CentOS  
 `yum -y install git php-curl php-json`  
- 
+ Clone o projeto  
 `cd /usr/share`  
 `git clone https://github.com/goiabinha/zabbix-pdf-report.git`  
 `cd zabbix-pdf-report`  
-Editar o arquivo `config.inc.php` com as credenciais do servidor zabbix  
+Ajuste as configurações com as credenciais do servidor zabbix  
 `vi /usr/share/zabbix-pdf-report/config.inc.php`  
+Ajuste as permissões das pastas e arquivos  
 `chmod 755 -R /usr/share/zabbix-pdf-report/tmp`  
 `chmod 755 -R /usr/share/zabbix-pdf-report/reports`  
 `chown -R www-data:www-data /usr/share/zabbix-pdf-report`  
+Configure o apache  
 `cp /usr/share/zabbix-pdf-report/zabbix-pdf-report.conf /etc/apache2/conf-available`  
 `a2enconf zabbix-pdf-report`  
 `systemctl restart apache2`  
