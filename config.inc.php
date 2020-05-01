@@ -13,6 +13,7 @@ setlocale( LC_MESSAGES, $locale);
 bindtextdomain("messages", $directory);
 bind_textdomain_codeset("messages", 'UTF-8');
 textdomain("messages");
+
 // debug
 #if (false === setlocale(LC_MESSAGES, $locale)) {
 #    echo sprintf('Locale "%s" is not installed in the system.', $locale);
