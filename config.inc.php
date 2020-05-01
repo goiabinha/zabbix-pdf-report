@@ -13,9 +13,10 @@ setlocale( LC_MESSAGES, $locale);
 bindtextdomain("messages", $directory);
 bind_textdomain_codeset("messages", 'UTF-8');
 textdomain("messages");
-if (false === setlocale(LC_MESSAGES, $locale)) {
-    echo sprintf('Locale "%s" is not installed in the system.', $locale);
-}
+// debug
+#if (false === setlocale(LC_MESSAGES, $locale)) {
+#    echo sprintf('Locale "%s" is not installed in the system.', $locale);
+#}
 
 // What items would you like to see in the report? Things that do not match are excluded automatically.
 $items = array('system information'=>'string','uptime'=>'seconds', 'boot time'=>'datetime', 'total memory'=>'bytes', 'available memory'=>'bytes', 'Free disk space'=>'number', 'Free swap space in %'=>'number', 'version of zabbix_agent'=>'string', 'services'=>'string', 'update'=>'number','certificate'=>'string','advanced ntp'=>'string','Interface speed'=>'bits','Operational status'=>'updown','Alias of interface'=>'string','certificate'=>'string');
