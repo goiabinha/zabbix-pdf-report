@@ -17,7 +17,7 @@ msgstr ""
 
 #: chooser.php:46 index.php:35 index.php:56
 msgid "Zabbix PDF report"
-msgstr "Relatório PDF do Zabbix"
+msgstr "Relatório PDF Zabbix"
 
 #: chooser.php:123
 msgid "Generate PDF Report"
