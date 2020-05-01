@@ -22,5 +22,7 @@ Editar o arquivo `config.inc.php` com as credenciais do servidor zabbix
 `a2enconf zabbix-pdf-report`  
 `systemctl restart apache2`  
 
+Acesse `http://IP_DO_SERVIDOR/report`  
+
 ### Follow the discussion here:
 https://www.zabbix.com/forum/showthread.php?t=24998
