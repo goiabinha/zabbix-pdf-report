@@ -24,5 +24,5 @@ Editar o arquivo `config.inc.php` com as credenciais do servidor zabbix
 
 Acesse `http://IP_DO_SERVIDOR/report`  
 
-### Follow the discussion here:
+### Código original
 https://www.zabbix.com/forum/showthread.php?t=24998
