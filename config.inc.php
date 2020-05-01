@@ -1,7 +1,6 @@
 <?php
 //CONFIGURABLE
 $user_login=1; // If $user_login is 0, use credentials below and don't prompt for login.
-//$user_login=0; // If $user_login is 0, use credentials below and don't prompt for login.
 $allow_localhost=1; // If a request is made from 127.0.0.1, use credentials below in createpdf.php
 
 $version = '1.1.2';
