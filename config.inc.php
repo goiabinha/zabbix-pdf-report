@@ -33,8 +33,7 @@ $mygraphs = '#.*#'; // Match all graphs
 $myitemgraphs = '#(Utilization of|farm connection|Average Latency|Number of processes|Cache % Hit)#';
 
 # zabbix server info(user must have API access)
-// $z_server 	= 'http://localhost/zabbix/';
-$z_server 	= 'http://YourServerHere/zabbix/'; // Replace YourServerHere with either en IP or an FDQN (e.g. zabbix.company.com). Remove the s in https if for some reason you don't use https yet. Or better yet, get Let's Encrypt installed and use https!
+$z_server 	= 'http://localhost/zabbix/'; // Replace YourServerHere with either en IP or an FDQN (e.g. zabbix.company.com). Remove the s in https if for some reason you don't use https yet. Or better yet, get Let's Encrypt installed and use https!
 $z_user		= 'Admin';
 $z_pass		= 'zabbix';
 

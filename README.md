@@ -1,19 +1,26 @@
-zabbix-dynamic-report-generation
-================================
-Please run ./fixrights.sh after you have checked out this repo. By default, reports and tmp folders will not exist and need to be created.
-They also need to be writable by the webserver. At present they are writable by everyone. Patches welcome.
+### Zabbix PDF Report
+Nomeie todos os títulos de gráficos ou itens para os quais você deseja gerar um gráfico.  
+Defina o escopo de um host ou grupo de hosts.  
+Selecione o período como última hora, último dia, semana passada. Gere PDF.  
+Eventos também podem ser incluídos no relatório.  
 
-If in doubt: mkdir tmp reports; chmod 777 tmp reports
+### Instalação
+Debian/Ubuntu  
+`apt -y install git php-curl php-json`  
+RHEL/CentOS  
+`yum -y install git php-curl php-json`  
+ 
+`cd /usr/share`  
+`git clone https://github.com/goiabinha/zabbix-pdf-report.git`  
+`cd zabbix-pdf-report`  
+Editar o arquivo `config.inc.php` com as credenciais do servidor zabbix  
+`vi /usr/share/zabbix-pdf-report/config.inc.php`  
+`chmod 755 -R /usr/share/zabbix-pdf-report/tmp`  
+`chmod 755 -R /usr/share/zabbix-pdf-report/reports`  
+`chown -R www-data:www-data /usr/share/zabbix-pdf-report`  
+`cp /usr/share/zabbix-pdf-report/zabbix-pdf-report.conf /etc/apache2/conf-available`  
+`a2enconf zabbix-pdf-report`  
+`systemctl restart apache2`  
 
-New User
-========
-Copy config.inc.php.dist to config.inc.php and edit it to fit your environment. It should be fairly well documented internally.
-
-Existing User
-=============
-Check the changes in config.inc.php.dist, if any, against your local copy and port them over, or make your changes again like the New User section.
-
-Remember to adjust config.inc.php to match your company, server and location. The dist file has dummy values that will not work on its own.
-
-Follow the discussion here:
+### Follow the discussion here:
 https://www.zabbix.com/forum/showthread.php?t=24998
