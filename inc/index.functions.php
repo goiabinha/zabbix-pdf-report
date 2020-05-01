@@ -25,10 +25,10 @@ function array_flatten($array) {
 	return $output;
 }
 
-function listdir_by_date($path){
+function listdir_by_date($path) {
 	$dir = opendir($path);
 	$list = array();
-	while($file = readdir($dir)){
+	while($file = readdir($dir)) {
 		if ($file != '.' and $file != '..'){
 			// add the filename, to be sure not to
 			// overwrite a array key
@@ -50,7 +50,7 @@ function ListOldReports($dir) {
 	echo "<tbody>";
 	foreach ($dir_files as $fdate => $fname) {
 		$fdate = explode(",",$fdate);
-		$fdate = date("Y.m.d H:i:s", $fdate[0]);
+		$fdate = date("d/m/y H:i:s", $fdate[0]);
 		$name=substr(str_replace("_"," ",$fname), 0, -4);
 		$name=substr(str_replace("--","/",$fname), 0, -4);
 

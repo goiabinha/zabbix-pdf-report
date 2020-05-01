@@ -100,8 +100,8 @@ if (isset($_GET['mygraphs2'])) { $mygraphs=$_GET['mygraphs2']; } // Use the manu
 if (isset($_GET['myitems2'])) { $myitemgraphs=$_GET['myitems2']; } // Use the manually specified values for what graphs to show
 
 // Calculate report starttime and endtime
-$report_start	= date('Y.m.d H:i',$starttime);
-$report_end	= date('Y.m.d H:i',$endtime);
+$report_start	= date('d/m/Y H:i',$starttime);
+$report_end	= date('d/m/Y H:i',$endtime);
 
 // Setup temporary file/directory names
 $z_tmpimg_path	= tempdir($z_tmp_path);
@@ -131,7 +131,13 @@ or die('Unable to login: '.print_r(ZabbixAPI::getLastError(),true));
 $fh = fopen($tmp_pdf_data, 'w');
 $stringData = "1<"._("Introduction").">\n\n";
 fwrite($fh, $stringData);
-$stringData = _("This is an automatically generated PDF file containing data gathered from Zabbix Monitoring System")."\n";
+$stringData = _("This is an automatically generated PDF file containing data gathered from Zabbix Monitoring System")."\n\n";
+$stringData .= _("<b>Definitions:</b>")."\n";
+$stringData .= _("<b>host</b> - a networked device that you want to monitor, with IP/DNS.")."\n";
+$stringData .= _("<b>host group</b> - a logical grouping of hosts; it may contain hosts and templates. Hosts and templates within a host group are not in any way linked to each other. Host groups are used when assigning access rights to hosts for different user groups.")."\n";
+$stringData .= _("<b>item</b> - a particular piece of data that you want to receive off of a host, a metric of data.")."\n";
+$stringData .= _("<b>trigger</b> - a logical expression that defines a problem threshold and is used to evaluate data received in items.")." ";
+$stringData .= _("When received data are above the threshold, triggers go from 'Ok' into a 'Problem' state. When received data are below the threshold, triggers stay in/return to an 'Ok' state.")."\n";
 fwrite($fh, $stringData);
 $stringData = "#NP\n";
 fwrite($fh, $stringData);
@@ -198,23 +204,23 @@ $images = '';
 // select a font
 $pdf->selectFont($mainFont);
 
-$pdf->ezText("Zabbix Report",(40-strlen($company_name)),array('justification'=>'centre'));
+$pdf->ezText(_("Zabbix Report"),(40-strlen($company_name)),array('justification'=>'centre'));
 $pdf->ezText("",14,array('justification'=>'centre'));
-$pdf->ezText("for",16,array('justification'=>'centre'));
+$pdf->ezText(_("for"),16,array('justification'=>'centre'));
 $pdf->ezText("",14,array('justification'=>'centre'));
 $pdf->ezText("$name",40,array('justification'=>'centre'));
 $pdf->ezText("",14,array('justification'=>'centre'));
-$pdf->ezText("generated on",14,array('justification'=>'centre'));
+$pdf->ezText(_("generated on"),14,array('justification'=>'centre'));
 $pdf->ezText("",14,array('justification'=>'centre'));
-$pdf->ezText(date('l jS \of F Y \a\t H:i'),19,array('justification'=>'centre'));
+$pdf->ezText(date('d/m/Y H:i'),19,array('justification'=>'centre'));
 
 $pdf->openHere('Fit');
 
 company_logo($pdf,150,$pdf->y-80,80,150,200);
 
 $pdf->ezSetDy(-400);
-$pdf->ezText("Report start  : $report_start",14,array('justification'=>'right'));
-$pdf->ezText("Report end   : $report_end",14,array('justification'=>'right'));
+$pdf->ezText(_("Report start")."  : $report_start",14,array('justification'=>'right'));
+$pdf->ezText(_("Report end")."   : $report_end",14,array('justification'=>'right'));
 
 $pdf->selectFont($mainFont);
 

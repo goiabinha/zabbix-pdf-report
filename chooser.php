@@ -53,7 +53,7 @@ header( 'Content-type: text/html; charset=utf-8' );
     <link rel="stylesheet" type="text/css" href="css/tablesorter.css"/ >
     <link rel="stylesheet" type="text/css" href="css/select2.css"/ >
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="js/jquery.datetimepicker.min.js"></script>
     <script type="text/javascript" src="js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="js/select2.min.js"></script>
@@ -143,7 +143,7 @@ or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
 ?>
 <div style="text-align: center;">
     <form class="cmxform" id="ReportForm" name="ReportForm" action='createpdf.php' method='GET'>
-        <table border="1" rules="NONE" frame="BOX" width="600" cellpadding="10">
+        <table border="1" rules="NONE" frame="BOX" width="600" cellpadding="10" align="center">
             <tr>
                 <td valign="middle" align="left" width="115">
                     <label for="ReportType"><b><?php echo _("Report type"); ?></b></label>
@@ -213,8 +213,12 @@ or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
                         </select>
                     </p>
                     <p id="p_RangeCustom">
-                        &nbsp;<b><?php echo _("Start:"); ?></b><input name="startdate" id="datepicker_start" type="date" size="8" />&nbsp;<input name="starttime" id="timepicker_start" type="time" size="5" /><br/>
-                        &nbsp;<b><?php echo _("End:"); ?></b><input name="enddate" id="datepicker_end" type="date" size="8" />&nbsp;<input name="endtime" id="timepicker_end" type="time" size="5" />
+                        &nbsp;<b><?php echo _("Start:"); ?></b>
+                        <input name="startdate" id="datepicker_start" type="date" size="8" />&nbsp;
+                        <input name="starttime" id="timepicker_start" type="time" size="5" /><br/>
+                        &nbsp;<b><?php echo _("End:"); ?></b>&nbsp;&nbsp;&nbsp;
+                        <input name="enddate" id="datepicker_end" type="date" size="8" />&nbsp;
+                        <input name="endtime" id="timepicker_end" type="time" size="5" />
                     </p>
                 </td>
                 <td valign="bottom" align="middle">

@@ -1,6 +1,6 @@
 <?php
 //CONFIGURABLE
-$user_login=0; // If $user_login is 0, use credentials below and don't prompt for login.
+$user_login=1; // If $user_login is 0, use credentials below and don't prompt for login.
 //$user_login=0; // If $user_login is 0, use credentials below and don't prompt for login.
 $allow_localhost=1; // If a request is made from 127.0.0.1, use credentials below in createpdf.php
 
@@ -9,12 +9,12 @@ $version = '1.1.1';
 // I18N support information here
 $locale = "pt_BR.UTF8";
 $directory = dirname(__FILE__)."/locale";
-putenv("LC_ALL=" . $locale);
-setlocale( LC_ALL, $locale);
+putenv("LC_MESSAGES=" . $locale);
+setlocale( LC_MESSAGES, $locale);
 bindtextdomain("messages", $directory);
 bind_textdomain_codeset("messages", 'UTF-8');
 textdomain("messages");
-if (false === setlocale(LC_ALL, $locale)) {
+if (false === setlocale(LC_MESSAGES, $locale)) {
     echo sprintf('Locale "%s" is not installed in the system.', $locale);
 }
 
@@ -28,8 +28,8 @@ $showdates = false; // Prepend date and time on items and trends, or leave it ou
 //$showdates = true; // Prepend date and time on items and trends, or leave it out? false = leave it out.
 
 // Would you like to limit what graphs are displayed? Enter partial matches (or complete names) here.
-// $mygraphs = '#.*#'; // Match all graphs
-$mygraphs = '#(Ping|CPU load|CPU usage|CPU util|processor|Disk space|Swap|Ethernet|Memory usage|^Traffic on |traffic on eth)#';
+$mygraphs = '#.*#'; // Match all graphs
+// $mygraphs = '#(Ping|CPU load|CPU usage|CPU util|processor|Disk space|Swap|Ethernet|Memory usage|^Traffic on |traffic on eth)#';
 $myitemgraphs = '#(Utilization of|farm connection|Average Latency|Number of processes|Cache % Hit)#';
 
 # zabbix server info(user must have API access)
@@ -40,11 +40,10 @@ $z_pass		= 'zabbix';
 
 
 # Temporary directory for storing pdf data and graphs - must exist
-$z_tmp_path	= './tmp';
+$z_tmp_path	= dirname(__FILE__).'/tmp';
 # Directory for storing PDF reports
-$pdf_report_dir	= './reports';
+$pdf_report_dir	= dirname(__FILE__).'/reports';
 # Root URL to reports
-#$pdf_report_url	= $z_server ."report/reports";
 $pdf_report_url	= "./reports";
 # paper settings
 $paper_format	= 'A4'; // formats supported: 4A0, 2A0, A0 -> A10, B0 -> B10, C0 -> C10, RA0 -> RA4, SRA0 -> SRA4, LETTER, LEGAL, EXECUTIVE, FOLIO
@@ -54,7 +53,7 @@ $timezone	= 'America/Sao_Paulo';
 # Logo used in PDF - may be empty
 # TODO: Specify image size!
 $pdf_logo	= './images/general/zabbix.png';
-$company_name   = 'YourCompany Name';
+$company_name   = 'Company';
 
 //DO NOT CHANGE BELOW THIS LINE
 $z_tmp_cookies 	= "/tmp/";
