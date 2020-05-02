@@ -16,14 +16,14 @@ RHEL/CentOS
 `cd zabbix-pdf-report`  
 Ajuste as configurações com as credenciais do servidor zabbix  
 `vi /usr/share/zabbix-pdf-report/config.inc.php`  
-Ajuste as permissões das pastas e arquivos  
-`chmod 755 -R /usr/share/zabbix-pdf-report/tmp`  
-`chmod 755 -R /usr/share/zabbix-pdf-report/reports`  
-`chown -R www-data:www-data /usr/share/zabbix-pdf-report`  
 Configure o apache  
 `cp /usr/share/zabbix-pdf-report/zabbix-pdf-report.conf /etc/apache2/conf-available`  
 `a2enconf zabbix-pdf-report`  
 `systemctl restart apache2`  
+Ajuste as permissões das pastas e arquivos  
+`chmod 755 -R /usr/share/zabbix-pdf-report/tmp`  
+`chmod 755 -R /usr/share/zabbix-pdf-report/reports`  
+`chown -R www-data:www-data /usr/share/zabbix-pdf-report`    
 
 Acesse `http://IP_DO_SERVIDOR/report`  
 
