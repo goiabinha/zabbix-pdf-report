@@ -15,6 +15,7 @@ RHEL/CentOS
 `git clone https://github.com/goiabinha/zabbix-pdf-report.git`  
 `cd zabbix-pdf-report`  
 Ajuste as configurações com as credenciais do servidor zabbix  
+`cp /usr/share/zabbix-pdf-report/config.example.php /usr/share/zabbix-pdf-report/config.inc.php`  
 `vi /usr/share/zabbix-pdf-report/config.inc.php`  
 Configure o apache  
 `cp /usr/share/zabbix-pdf-report/zabbix-pdf-report.conf /etc/apache2/conf-available`  
